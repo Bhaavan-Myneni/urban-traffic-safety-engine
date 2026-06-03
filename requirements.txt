@@ -1,0 +1,50 @@
+# Core
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Data processing
+pandas>=2.1.0
+numpy>=1.26.0
+pyarrow>=14.0.0
+
+# Computer vision & object detection
+opencv-python>=4.9.0
+ultralytics>=8.1.0          # YOLOv8
+Pillow>=10.2.0
+
+# Machine learning
+scikit-learn>=1.4.0
+joblib>=1.3.0
+
+# Database
+psycopg2-binary>=2.9.9
+SQLAlchemy>=2.0.25
+alembic>=1.13.0
+
+# Dashboard
+streamlit>=1.31.0
+plotly>=5.18.0
+altair>=5.2.0
+
+# Apache Airflow (install separately in prod; listed for reference)
+# apache-airflow>=2.8.0
+# apache-airflow-providers-postgres>=5.10.0
+
+# Geospatial analytics
+folium>=0.16.0
+
+# Utilities
+PyYAML>=6.0.1
+requests>=2.31.0
+tqdm>=4.66.0
+loguru>=0.7.2
+
+# Development & testing
+pytest>=8.0.0
+pytest-cov>=4.1.0
+ruff>=0.2.0
+black>=24.1.0
+pre-commit>=3.6.0
+ipython>=8.20.0
+jupyter>=1.0.0

@@ -1,0 +1,19 @@
+[project]
+name = "urban-traffic-safety-engine"
+version = "0.1.0"
+description = "Computer vision and analytics platform for urban traffic safety monitoring"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

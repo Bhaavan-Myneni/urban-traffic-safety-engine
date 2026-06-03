@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_280f2cdd2e8ec278891a79dccf9d0de6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        top: 10px;
+        left: 50px;
+        z-index: 9999;
+        background-color: white;
+        padding: 10px 14px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    ">
+        <b>Urban Traffic Safety Engine</b><br>
+        Bloomington, IN — Traffic Hotspot Map
+    </div>
+    
+    
+            <div class="folium-map" id="map_280f2cdd2e8ec278891a79dccf9d0de6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_280f2cdd2e8ec278891a79dccf9d0de6 = L.map(
+                "map_280f2cdd2e8ec278891a79dccf9d0de6",
+                {
+                    center: [39.16843983333334, -86.52631206666666],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_280f2cdd2e8ec278891a79dccf9d0de6);
+
+            
+
+        
+    
+            var tile_layer_c6a21bba7bad656c07894147696b452d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c6a21bba7bad656c07894147696b452d.addTo(map_280f2cdd2e8ec278891a79dccf9d0de6);
+        
+    
+            var tile_layer_2cbae4f46384ff902d1477785893911c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2cbae4f46384ff902d1477785893911c.addTo(map_280f2cdd2e8ec278891a79dccf9d0de6);
+        
+    
+            var feature_group_91001ece05ca60c4e81a6723917cdeb5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_9b9c4c6a36a2279700a8741bede7b118 = L.circleMarker(
+                [39.168819, -86.521835],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_375f2ff78b630e604a728f7fa5b1ba29 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_50c17db8c584a04cc758d15fbd949402 = $(`<div id="html_50c17db8c584a04cc758d15fbd949402" style="width: 100.0%; height: 100.0%;"><b>Aerial Cam 01</b><br><b>Camera ID:</b> CAM_AERIAL_01<br><b>Scene:</b> aerial<br><b>Road type:</b> aerial_corridor<br><b>Traffic density:</b> 1.6287<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 221<br><b>Pedestrian count:</b> 1</div>`)[0];
+                popup_375f2ff78b630e604a728f7fa5b1ba29.setContent(html_50c17db8c584a04cc758d15fbd949402);
+            
+        
+
+        circle_marker_9b9c4c6a36a2279700a8741bede7b118.bindPopup(popup_375f2ff78b630e604a728f7fa5b1ba29)
+        ;
+
+        
+    
+    
+            circle_marker_9b9c4c6a36a2279700a8741bede7b118.bindTooltip(
+                `<div>
+                     Aerial Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_151cdfc0544b6b0b780404b823b3bae0 = L.circleMarker(
+                [39.173281, -86.520688],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_e0b6f67bbf5300f8045ceff0c668df46 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d998cba5dc4e0754569252995f334083 = $(`<div id="html_d998cba5dc4e0754569252995f334083" style="width: 100.0%; height: 100.0%;"><b>Aerial Cam 02</b><br><b>Camera ID:</b> CAM_AERIAL_02<br><b>Scene:</b> aerial<br><b>Road type:</b> aerial_corridor<br><b>Traffic density:</b> 0.5000<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 10</div>`)[0];
+                popup_e0b6f67bbf5300f8045ceff0c668df46.setContent(html_d998cba5dc4e0754569252995f334083);
+            
+        
+
+        circle_marker_151cdfc0544b6b0b780404b823b3bae0.bindPopup(popup_e0b6f67bbf5300f8045ceff0c668df46)
+        ;
+
+        
+    
+    
+            circle_marker_151cdfc0544b6b0b780404b823b3bae0.bindTooltip(
+                `<div>
+                     Aerial Cam 02 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eec122d37ac48e7905d84a239da3534d = L.circleMarker(
+                [39.166038, -86.51873],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_937a5649ba2b04462a6070d45a490233 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_feac3d3f5f1a8345b568b0f45375d9f9 = $(`<div id="html_feac3d3f5f1a8345b568b0f45375d9f9" style="width: 100.0%; height: 100.0%;"><b>Aerial Cam 03</b><br><b>Camera ID:</b> CAM_AERIAL_03<br><b>Scene:</b> aerial<br><b>Road type:</b> aerial_corridor<br><b>Traffic density:</b> 1.1076<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 86<br><b>Pedestrian count:</b> 3</div>`)[0];
+                popup_937a5649ba2b04462a6070d45a490233.setContent(html_feac3d3f5f1a8345b568b0f45375d9f9);
+            
+        
+
+        circle_marker_eec122d37ac48e7905d84a239da3534d.bindPopup(popup_937a5649ba2b04462a6070d45a490233)
+        ;
+
+        
+    
+    
+            circle_marker_eec122d37ac48e7905d84a239da3534d.bindTooltip(
+                `<div>
+                     Aerial Cam 03 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7a1de13e2d0b5414edbd9d652d600f2d = L.circleMarker(
+                [39.173864, -86.524576],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_f18e94cbbbe3bca8537eabf5b868c999 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fd17f1dd59947157519193480eb769df = $(`<div id="html_fd17f1dd59947157519193480eb769df" style="width: 100.0%; height: 100.0%;"><b>Aerial Cam 04</b><br><b>Camera ID:</b> CAM_AERIAL_04<br><b>Scene:</b> aerial<br><b>Road type:</b> aerial_corridor<br><b>Traffic density:</b> 1.9324<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 397<br><b>Pedestrian count:</b> 6</div>`)[0];
+                popup_f18e94cbbbe3bca8537eabf5b868c999.setContent(html_fd17f1dd59947157519193480eb769df);
+            
+        
+
+        circle_marker_7a1de13e2d0b5414edbd9d652d600f2d.bindPopup(popup_f18e94cbbbe3bca8537eabf5b868c999)
+        ;
+
+        
+    
+    
+            circle_marker_7a1de13e2d0b5414edbd9d652d600f2d.bindTooltip(
+                `<div>
+                     Aerial Cam 04 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8857cf92a7ce6ad98baab5bc8b6c9122 = L.circleMarker(
+                [39.163413, -86.530445],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_fa9a2e7f4e0a7f10a4faaa99a95995a9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_31f842cffc3e2491d675dd1deab45aae = $(`<div id="html_31f842cffc3e2491d675dd1deab45aae" style="width: 100.0%; height: 100.0%;"><b>Batch Composite Cam 01</b><br><b>Camera ID:</b> CAM_BATCH_COMPOSITE_01<br><b>Scene:</b> composite<br><b>Road type:</b> mixed_corridor<br><b>Traffic density:</b> 0.0000<br><b>Congestion level:</b> Unknown<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_fa9a2e7f4e0a7f10a4faaa99a95995a9.setContent(html_31f842cffc3e2491d675dd1deab45aae);
+            
+        
+
+        circle_marker_8857cf92a7ce6ad98baab5bc8b6c9122.bindPopup(popup_fa9a2e7f4e0a7f10a4faaa99a95995a9)
+        ;
+
+        
+    
+    
+            circle_marker_8857cf92a7ce6ad98baab5bc8b6c9122.bindTooltip(
+                `<div>
+                     Batch Composite Cam 01 — Unknown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1f311db18644bc3a49a202e8d4a96eb3 = L.circleMarker(
+                [39.179958, -86.518517],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_74bca03b3ec6c702629d594ac3317a36 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3f3413432f9fc1c0eaa3a2a516109ef9 = $(`<div id="html_3f3413432f9fc1c0eaa3a2a516109ef9" style="width: 100.0%; height: 100.0%;"><b>Bridge Cam 01</b><br><b>Camera ID:</b> CAM_BRIDGE_01<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 2.3615<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 921</div>`)[0];
+                popup_74bca03b3ec6c702629d594ac3317a36.setContent(html_3f3413432f9fc1c0eaa3a2a516109ef9);
+            
+        
+
+        circle_marker_1f311db18644bc3a49a202e8d4a96eb3.bindPopup(popup_74bca03b3ec6c702629d594ac3317a36)
+        ;
+
+        
+    
+    
+            circle_marker_1f311db18644bc3a49a202e8d4a96eb3.bindTooltip(
+                `<div>
+                     Bridge Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b5bf76a6c87cb8ebbb696fb63dafb18d = L.circleMarker(
+                [39.167293, -86.542983],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_d63469744982d0e979f98228cc9afebd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_76a2a1b12ecb016253e4997f90069309 = $(`<div id="html_76a2a1b12ecb016253e4997f90069309" style="width: 100.0%; height: 100.0%;"><b>City Night Cam 01</b><br><b>Camera ID:</b> CAM_CITY_NIGHT_01<br><b>Scene:</b> night_city<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 3.1261<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 318<br><b>Pedestrian count:</b> 752</div>`)[0];
+                popup_d63469744982d0e979f98228cc9afebd.setContent(html_76a2a1b12ecb016253e4997f90069309);
+            
+        
+
+        circle_marker_b5bf76a6c87cb8ebbb696fb63dafb18d.bindPopup(popup_d63469744982d0e979f98228cc9afebd)
+        ;
+
+        
+    
+    
+            circle_marker_b5bf76a6c87cb8ebbb696fb63dafb18d.bindTooltip(
+                `<div>
+                     City Night Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b0fbb588695afab8d411ee657115d19 = L.circleMarker(
+                [39.166255, -86.534631],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_f2280ed04d1ee0bf1b950aa5d82141f6 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_58b22676c51c1b1931c27bd1effba8f4 = $(`<div id="html_58b22676c51c1b1931c27bd1effba8f4" style="width: 100.0%; height: 100.0%;"><b>City Night Cam 02</b><br><b>Camera ID:</b> CAM_CITY_NIGHT_02<br><b>Scene:</b> night_city<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 0.5100<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 255</div>`)[0];
+                popup_f2280ed04d1ee0bf1b950aa5d82141f6.setContent(html_58b22676c51c1b1931c27bd1effba8f4);
+            
+        
+
+        circle_marker_8b0fbb588695afab8d411ee657115d19.bindPopup(popup_f2280ed04d1ee0bf1b950aa5d82141f6)
+        ;
+
+        
+    
+    
+            circle_marker_8b0fbb588695afab8d411ee657115d19.bindTooltip(
+                `<div>
+                     City Night Cam 02 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_acef6a1e48ac48bcd1eccdb374c67a92 = L.circleMarker(
+                [39.157505, -86.5336],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_095b2ad74c3a3b386ea17e3a0baa45fb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5f25f990140f75fda53f41b260345de8 = $(`<div id="html_5f25f990140f75fda53f41b260345de8" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 01</b><br><b>Camera ID:</b> CAM_CITY_STREET_01<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 8.2149<br><b>Congestion level:</b> Medium<br><b>Vehicle count:</b> 869<br><b>Pedestrian count:</b> 20</div>`)[0];
+                popup_095b2ad74c3a3b386ea17e3a0baa45fb.setContent(html_5f25f990140f75fda53f41b260345de8);
+            
+        
+
+        circle_marker_acef6a1e48ac48bcd1eccdb374c67a92.bindPopup(popup_095b2ad74c3a3b386ea17e3a0baa45fb)
+        ;
+
+        
+    
+    
+            circle_marker_acef6a1e48ac48bcd1eccdb374c67a92.bindTooltip(
+                `<div>
+                     City Street Cam 01 — Medium
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cc43cc2df0578065f8951a6591a9ca06 = L.circleMarker(
+                [39.162069, -86.523214],
+                {"bubblingMouseEvents": true, "color": "darkorange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkorange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_9cc6c547a9f63eb460833146409938c8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_56517aef70a38ac8978ffb323857e409 = $(`<div id="html_56517aef70a38ac8978ffb323857e409" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 02</b><br><b>Camera ID:</b> CAM_CITY_STREET_02<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 17.8300<br><b>Congestion level:</b> High<br><b>Vehicle count:</b> 2152<br><b>Pedestrian count:</b> 2828</div>`)[0];
+                popup_9cc6c547a9f63eb460833146409938c8.setContent(html_56517aef70a38ac8978ffb323857e409);
+            
+        
+
+        circle_marker_cc43cc2df0578065f8951a6591a9ca06.bindPopup(popup_9cc6c547a9f63eb460833146409938c8)
+        ;
+
+        
+    
+    
+            circle_marker_cc43cc2df0578065f8951a6591a9ca06.bindTooltip(
+                `<div>
+                     City Street Cam 02 — High
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_260b4da6aa7f7757959762e3b3ea9b9f = L.circleMarker(
+                [39.159635, -86.53168],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_be50600f4da554b19dc4f45c99dddfda = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_204931bccc4fed44176b81c86e8c1af8 = $(`<div id="html_204931bccc4fed44176b81c86e8c1af8" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 03</b><br><b>Camera ID:</b> CAM_CITY_STREET_03<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 20.4966<br><b>Congestion level:</b> Severe<br><b>Vehicle count:</b> 2793<br><b>Pedestrian count:</b> 276</div>`)[0];
+                popup_be50600f4da554b19dc4f45c99dddfda.setContent(html_204931bccc4fed44176b81c86e8c1af8);
+            
+        
+
+        circle_marker_260b4da6aa7f7757959762e3b3ea9b9f.bindPopup(popup_be50600f4da554b19dc4f45c99dddfda)
+        ;
+
+        
+    
+    
+            circle_marker_260b4da6aa7f7757959762e3b3ea9b9f.bindTooltip(
+                `<div>
+                     City Street Cam 03 — Severe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_154655f35a4dd693ab1860168ab558f5 = L.circleMarker(
+                [39.164517, -86.530665],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_7b0fea30ffb7edd377c1c9036f6c9807 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_58d18efe2794befeaaa11373147f9cf5 = $(`<div id="html_58d18efe2794befeaaa11373147f9cf5" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 04</b><br><b>Camera ID:</b> CAM_CITY_STREET_04<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 0.0000<br><b>Congestion level:</b> Unknown<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_7b0fea30ffb7edd377c1c9036f6c9807.setContent(html_58d18efe2794befeaaa11373147f9cf5);
+            
+        
+
+        circle_marker_154655f35a4dd693ab1860168ab558f5.bindPopup(popup_7b0fea30ffb7edd377c1c9036f6c9807)
+        ;
+
+        
+    
+    
+            circle_marker_154655f35a4dd693ab1860168ab558f5.bindTooltip(
+                `<div>
+                     City Street Cam 04 — Unknown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97d9bed20fee791049bac12999b92476 = L.circleMarker(
+                [39.15859, -86.523386],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_72b20ac0f1b565b583a457b21f5ac8a4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2563e9288042d769405b9921440ee327 = $(`<div id="html_2563e9288042d769405b9921440ee327" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 05</b><br><b>Camera ID:</b> CAM_CITY_STREET_05<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 1.0000<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 326</div>`)[0];
+                popup_72b20ac0f1b565b583a457b21f5ac8a4.setContent(html_2563e9288042d769405b9921440ee327);
+            
+        
+
+        circle_marker_97d9bed20fee791049bac12999b92476.bindPopup(popup_72b20ac0f1b565b583a457b21f5ac8a4)
+        ;
+
+        
+    
+    
+            circle_marker_97d9bed20fee791049bac12999b92476.bindTooltip(
+                `<div>
+                     City Street Cam 05 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_89ecd67aab022c663af36a410a2e894b = L.circleMarker(
+                [39.158842, -86.526804],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_9934b6d5e439d37236763c9d3e794d52 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_69ea4b7f20a07a4ef1c319eb7dc993d3 = $(`<div id="html_69ea4b7f20a07a4ef1c319eb7dc993d3" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 06</b><br><b>Camera ID:</b> CAM_CITY_STREET_06<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 1.1086<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 1<br><b>Pedestrian count:</b> 457</div>`)[0];
+                popup_9934b6d5e439d37236763c9d3e794d52.setContent(html_69ea4b7f20a07a4ef1c319eb7dc993d3);
+            
+        
+
+        circle_marker_89ecd67aab022c663af36a410a2e894b.bindPopup(popup_9934b6d5e439d37236763c9d3e794d52)
+        ;
+
+        
+    
+    
+            circle_marker_89ecd67aab022c663af36a410a2e894b.bindTooltip(
+                `<div>
+                     City Street Cam 06 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_448b9fd705cf3691e4e4f7749ebd74c1 = L.circleMarker(
+                [39.160733, -86.529488],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_6c4eff60bbe8b1610e31f1a14aea9943 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5635378a1cc719292ffe776ba9cfc131 = $(`<div id="html_5635378a1cc719292ffe776ba9cfc131" style="width: 100.0%; height: 100.0%;"><b>City Street Cam 07</b><br><b>Camera ID:</b> CAM_CITY_STREET_07<br><b>Scene:</b> city_street<br><b>Road type:</b> urban_arterial<br><b>Traffic density:</b> 1.0314<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 295</div>`)[0];
+                popup_6c4eff60bbe8b1610e31f1a14aea9943.setContent(html_5635378a1cc719292ffe776ba9cfc131);
+            
+        
+
+        circle_marker_448b9fd705cf3691e4e4f7749ebd74c1.bindPopup(popup_6c4eff60bbe8b1610e31f1a14aea9943)
+        ;
+
+        
+    
+    
+            circle_marker_448b9fd705cf3691e4e4f7749ebd74c1.bindTooltip(
+                `<div>
+                     City Street Cam 07 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eee7d2fb6605a2b047e30afc770efee7 = L.circleMarker(
+                [39.164353, -86.53812],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_16ba9d131328e1421b0f23049c068ab9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_1563f01b17ed437e0d00a9a90b2cc85c = $(`<div id="html_1563f01b17ed437e0d00a9a90b2cc85c" style="width: 100.0%; height: 100.0%;"><b>Dashcam Cam 01</b><br><b>Camera ID:</b> CAM_DASHCAM_01<br><b>Scene:</b> dashcam<br><b>Road type:</b> local_street<br><b>Traffic density:</b> 1.0000<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 10<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_16ba9d131328e1421b0f23049c068ab9.setContent(html_1563f01b17ed437e0d00a9a90b2cc85c);
+            
+        
+
+        circle_marker_eee7d2fb6605a2b047e30afc770efee7.bindPopup(popup_16ba9d131328e1421b0f23049c068ab9)
+        ;
+
+        
+    
+    
+            circle_marker_eee7d2fb6605a2b047e30afc770efee7.bindTooltip(
+                `<div>
+                     Dashcam Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b34ae9019c94484a7e0b9e4ebbd4c97d = L.circleMarker(
+                [39.159071, -86.541224],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_c348fe3cae34e198eeb8e3592a7b53c5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f0cd5a34669941020245cdadcddf74c9 = $(`<div id="html_f0cd5a34669941020245cdadcddf74c9" style="width: 100.0%; height: 100.0%;"><b>Dashcam Cam 02</b><br><b>Camera ID:</b> CAM_DASHCAM_02<br><b>Scene:</b> dashcam<br><b>Road type:</b> local_street<br><b>Traffic density:</b> 2.7829<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 462<br><b>Pedestrian count:</b> 50</div>`)[0];
+                popup_c348fe3cae34e198eeb8e3592a7b53c5.setContent(html_f0cd5a34669941020245cdadcddf74c9);
+            
+        
+
+        circle_marker_b34ae9019c94484a7e0b9e4ebbd4c97d.bindPopup(popup_c348fe3cae34e198eeb8e3592a7b53c5)
+        ;
+
+        
+    
+    
+            circle_marker_b34ae9019c94484a7e0b9e4ebbd4c97d.bindTooltip(
+                `<div>
+                     Dashcam Cam 02 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3359f78fa09e0e5b3084eb25793bf1b2 = L.circleMarker(
+                [39.187802, -86.509527],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_3e65937591003e6e810d07768aa98621 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_20db64637900eb20c8f372f579906e3e = $(`<div id="html_20db64637900eb20c8f372f579906e3e" style="width: 100.0%; height: 100.0%;"><b>Highway Cam 01</b><br><b>Camera ID:</b> CAM_HIGHWAY_01<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 1.4028<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 101<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_3e65937591003e6e810d07768aa98621.setContent(html_20db64637900eb20c8f372f579906e3e);
+            
+        
+
+        circle_marker_3359f78fa09e0e5b3084eb25793bf1b2.bindPopup(popup_3e65937591003e6e810d07768aa98621)
+        ;
+
+        
+    
+    
+            circle_marker_3359f78fa09e0e5b3084eb25793bf1b2.bindTooltip(
+                `<div>
+                     Highway Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_687c6e3452ff576b5ed8bdf4e8757000 = L.circleMarker(
+                [39.184046, -86.518722],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_8fc81829682bd2dcdd36e8d3dee89cb4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8de8c084ee03bd2f77412b6c4703d581 = $(`<div id="html_8de8c084ee03bd2f77412b6c4703d581" style="width: 100.0%; height: 100.0%;"><b>Highway Cam 02</b><br><b>Camera ID:</b> CAM_HIGHWAY_02<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 6.3707<br><b>Congestion level:</b> Medium<br><b>Vehicle count:</b> 936<br><b>Pedestrian count:</b> 1</div>`)[0];
+                popup_8fc81829682bd2dcdd36e8d3dee89cb4.setContent(html_8de8c084ee03bd2f77412b6c4703d581);
+            
+        
+
+        circle_marker_687c6e3452ff576b5ed8bdf4e8757000.bindPopup(popup_8fc81829682bd2dcdd36e8d3dee89cb4)
+        ;
+
+        
+    
+    
+            circle_marker_687c6e3452ff576b5ed8bdf4e8757000.bindTooltip(
+                `<div>
+                     Highway Cam 02 — Medium
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_84d06d69cd9952653314d9eb28ba9051 = L.circleMarker(
+                [39.184316, -86.509055],
+                {"bubblingMouseEvents": true, "color": "darkorange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkorange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_a3a70d2c55ca08a5f1c15d32bfe341d4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6f9164caa231c94ee0f8896cd9ef57da = $(`<div id="html_6f9164caa231c94ee0f8896cd9ef57da" style="width: 100.0%; height: 100.0%;"><b>Highway Cam 03</b><br><b>Camera ID:</b> CAM_HIGHWAY_03<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 16.9091<br><b>Congestion level:</b> High<br><b>Vehicle count:</b> 3904<br><b>Pedestrian count:</b> 4</div>`)[0];
+                popup_a3a70d2c55ca08a5f1c15d32bfe341d4.setContent(html_6f9164caa231c94ee0f8896cd9ef57da);
+            
+        
+
+        circle_marker_84d06d69cd9952653314d9eb28ba9051.bindPopup(popup_a3a70d2c55ca08a5f1c15d32bfe341d4)
+        ;
+
+        
+    
+    
+            circle_marker_84d06d69cd9952653314d9eb28ba9051.bindTooltip(
+                `<div>
+                     Highway Cam 03 — High
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_00be4f2e64285db92427de5373b30ff1 = L.circleMarker(
+                [39.181795, -86.514634],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_cfb5df854bd91484575720bbcebfbf2c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7f3df5e1421327685d3a9c4e6098c943 = $(`<div id="html_7f3df5e1421327685d3a9c4e6098c943" style="width: 100.0%; height: 100.0%;"><b>Highway Cam 04</b><br><b>Camera ID:</b> CAM_HIGHWAY_04<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 1.1818<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 312</div>`)[0];
+                popup_cfb5df854bd91484575720bbcebfbf2c.setContent(html_7f3df5e1421327685d3a9c4e6098c943);
+            
+        
+
+        circle_marker_00be4f2e64285db92427de5373b30ff1.bindPopup(popup_cfb5df854bd91484575720bbcebfbf2c)
+        ;
+
+        
+    
+    
+            circle_marker_00be4f2e64285db92427de5373b30ff1.bindTooltip(
+                `<div>
+                     Highway Cam 04 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b93819b4c8c458685430b3ce10c2564 = L.circleMarker(
+                [39.180022, -86.514685],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_f734c9ba18fcd57399fd73f584182753 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d0098a543b16ff7c5d900f94b1cac88a = $(`<div id="html_d0098a543b16ff7c5d900f94b1cac88a" style="width: 100.0%; height: 100.0%;"><b>Highway Cam 05</b><br><b>Camera ID:</b> CAM_HIGHWAY_05<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 0.0000<br><b>Congestion level:</b> Unknown<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_f734c9ba18fcd57399fd73f584182753.setContent(html_d0098a543b16ff7c5d900f94b1cac88a);
+            
+        
+
+        circle_marker_4b93819b4c8c458685430b3ce10c2564.bindPopup(popup_f734c9ba18fcd57399fd73f584182753)
+        ;
+
+        
+    
+    
+            circle_marker_4b93819b4c8c458685430b3ce10c2564.bindTooltip(
+                `<div>
+                     Highway Cam 05 — Unknown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fab32ab3e420ce9d17a98911940d0dac = L.circleMarker(
+                [39.18132, -86.510279],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_884420004e5f7138a7ba00caf36afc41 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_451fece60be924e66bcdacf307cac32a = $(`<div id="html_451fece60be924e66bcdacf307cac32a" style="width: 100.0%; height: 100.0%;"><b>Highway Cam 06</b><br><b>Camera ID:</b> CAM_HIGHWAY_06<br><b>Scene:</b> highway<br><b>Road type:</b> highway<br><b>Traffic density:</b> 0.6000<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 1<br><b>Pedestrian count:</b> 4</div>`)[0];
+                popup_884420004e5f7138a7ba00caf36afc41.setContent(html_451fece60be924e66bcdacf307cac32a);
+            
+        
+
+        circle_marker_fab32ab3e420ce9d17a98911940d0dac.bindPopup(popup_884420004e5f7138a7ba00caf36afc41)
+        ;
+
+        
+    
+    
+            circle_marker_fab32ab3e420ce9d17a98911940d0dac.bindTooltip(
+                `<div>
+                     Highway Cam 06 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bab8626973887f9c04f50c80ea57d41f = L.circleMarker(
+                [39.167251, -86.533989],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_100cae2e35f01577e6f0bd8d8c86a565 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8369739ad297bbe8c0ef427a7dd1c7d0 = $(`<div id="html_8369739ad297bbe8c0ef427a7dd1c7d0" style="width: 100.0%; height: 100.0%;"><b>Intersection Cam 01</b><br><b>Camera ID:</b> CAM_INTERSECTION_01<br><b>Scene:</b> intersection<br><b>Road type:</b> signalized_intersection<br><b>Traffic density:</b> 7.4888<br><b>Congestion level:</b> Medium<br><b>Vehicle count:</b> 2960<br><b>Pedestrian count:</b> 71</div>`)[0];
+                popup_100cae2e35f01577e6f0bd8d8c86a565.setContent(html_8369739ad297bbe8c0ef427a7dd1c7d0);
+            
+        
+
+        circle_marker_bab8626973887f9c04f50c80ea57d41f.bindPopup(popup_100cae2e35f01577e6f0bd8d8c86a565)
+        ;
+
+        
+    
+    
+            circle_marker_bab8626973887f9c04f50c80ea57d41f.bindTooltip(
+                `<div>
+                     Intersection Cam 01 — Medium
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77a0f3e78b8c0061a36846aecf13c837 = L.circleMarker(
+                [39.171112, -86.536308],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_759992719b115998672110244022126d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2d749e858383ef7debe303f7e4b238e0 = $(`<div id="html_2d749e858383ef7debe303f7e4b238e0" style="width: 100.0%; height: 100.0%;"><b>Intersection Cam 02</b><br><b>Camera ID:</b> CAM_INTERSECTION_02<br><b>Scene:</b> intersection<br><b>Road type:</b> signalized_intersection<br><b>Traffic density:</b> 1.3438<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 86<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_759992719b115998672110244022126d.setContent(html_2d749e858383ef7debe303f7e4b238e0);
+            
+        
+
+        circle_marker_77a0f3e78b8c0061a36846aecf13c837.bindPopup(popup_759992719b115998672110244022126d)
+        ;
+
+        
+    
+    
+            circle_marker_77a0f3e78b8c0061a36846aecf13c837.bindTooltip(
+                `<div>
+                     Intersection Cam 02 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f564eb8f80f4c7260df50e29b21192f8 = L.circleMarker(
+                [39.167754, -86.5355],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_613528f19a7da96b658229b4e32af089 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_87dfca3bf35898f1613a105c2c3d6bc1 = $(`<div id="html_87dfca3bf35898f1613a105c2c3d6bc1" style="width: 100.0%; height: 100.0%;"><b>Intersection Cam 03</b><br><b>Camera ID:</b> CAM_INTERSECTION_03<br><b>Scene:</b> intersection<br><b>Road type:</b> signalized_intersection<br><b>Traffic density:</b> 8.9545<br><b>Congestion level:</b> Medium<br><b>Vehicle count:</b> 748<br><b>Pedestrian count:</b> 3823</div>`)[0];
+                popup_613528f19a7da96b658229b4e32af089.setContent(html_87dfca3bf35898f1613a105c2c3d6bc1);
+            
+        
+
+        circle_marker_f564eb8f80f4c7260df50e29b21192f8.bindPopup(popup_613528f19a7da96b658229b4e32af089)
+        ;
+
+        
+    
+    
+            circle_marker_f564eb8f80f4c7260df50e29b21192f8.bindTooltip(
+                `<div>
+                     Intersection Cam 03 — Medium
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3784775feef04447dbd45210f6f3452b = L.circleMarker(
+                [39.166449, -86.533413],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_fdb7e4ad40f8df6f7661f278b8ff515b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b3cf64a0b9fd91f6f257f4cfbd4d767d = $(`<div id="html_b3cf64a0b9fd91f6f257f4cfbd4d767d" style="width: 100.0%; height: 100.0%;"><b>Intersection Cam 04</b><br><b>Camera ID:</b> CAM_INTERSECTION_04<br><b>Scene:</b> intersection<br><b>Road type:</b> signalized_intersection<br><b>Traffic density:</b> 1.0000<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 1<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_fdb7e4ad40f8df6f7661f278b8ff515b.setContent(html_b3cf64a0b9fd91f6f257f4cfbd4d767d);
+            
+        
+
+        circle_marker_3784775feef04447dbd45210f6f3452b.bindPopup(popup_fdb7e4ad40f8df6f7661f278b8ff515b)
+        ;
+
+        
+    
+    
+            circle_marker_3784775feef04447dbd45210f6f3452b.bindTooltip(
+                `<div>
+                     Intersection Cam 04 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_363d21df287cd764eadb87fd68987d0b = L.circleMarker(
+                [39.161511, -86.528504],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_8ce56fc903b6d85c96011d2732421930 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_282b17878bd8cd03fb265123243ad14f = $(`<div id="html_282b17878bd8cd03fb265123243ad14f" style="width: 100.0%; height: 100.0%;"><b>Intersection Cam 05</b><br><b>Camera ID:</b> CAM_INTERSECTION_05<br><b>Scene:</b> intersection<br><b>Road type:</b> signalized_intersection<br><b>Traffic density:</b> 0.0000<br><b>Congestion level:</b> Unknown<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_8ce56fc903b6d85c96011d2732421930.setContent(html_282b17878bd8cd03fb265123243ad14f);
+            
+        
+
+        circle_marker_363d21df287cd764eadb87fd68987d0b.bindPopup(popup_8ce56fc903b6d85c96011d2732421930)
+        ;
+
+        
+    
+    
+            circle_marker_363d21df287cd764eadb87fd68987d0b.bindTooltip(
+                `<div>
+                     Intersection Cam 05 — Unknown
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d06f77333244289b82027c11ff1d5acf = L.circleMarker(
+                [39.162914, -86.535172],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_b9fe2cb4f3b529e03f1e0065aed1839f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7fa2906f0dc29c6acf90939c13b21fbd = $(`<div id="html_7fa2906f0dc29c6acf90939c13b21fbd" style="width: 100.0%; height: 100.0%;"><b>Roundabout Cam 01</b><br><b>Camera ID:</b> CAM_ROUNDABOUT_01<br><b>Scene:</b> intersection<br><b>Road type:</b> signalized_intersection<br><b>Traffic density:</b> 0.5000<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 0<br><b>Pedestrian count:</b> 3</div>`)[0];
+                popup_b9fe2cb4f3b529e03f1e0065aed1839f.setContent(html_7fa2906f0dc29c6acf90939c13b21fbd);
+            
+        
+
+        circle_marker_d06f77333244289b82027c11ff1d5acf.bindPopup(popup_b9fe2cb4f3b529e03f1e0065aed1839f)
+        ;
+
+        
+    
+    
+            circle_marker_d06f77333244289b82027c11ff1d5acf.bindTooltip(
+                `<div>
+                     Roundabout Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f9307acfa72a6458a47b98fcad276ef7 = L.circleMarker(
+                [39.152667, -86.518988],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_91001ece05ca60c4e81a6723917cdeb5);
+        
+    
+        var popup_d28142ec1359ff3b16131ba41e402540 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d375c2997257aac223a1c987912bdb41 = $(`<div id="html_d375c2997257aac223a1c987912bdb41" style="width: 100.0%; height: 100.0%;"><b>Tunnel Cam 01</b><br><b>Camera ID:</b> CAM_TUNNEL_01<br><b>Scene:</b> tunnel<br><b>Road type:</b> tunnel<br><b>Traffic density:</b> 1.8800<br><b>Congestion level:</b> Low<br><b>Vehicle count:</b> 235<br><b>Pedestrian count:</b> 0</div>`)[0];
+                popup_d28142ec1359ff3b16131ba41e402540.setContent(html_d375c2997257aac223a1c987912bdb41);
+            
+        
+
+        circle_marker_f9307acfa72a6458a47b98fcad276ef7.bindPopup(popup_d28142ec1359ff3b16131ba41e402540)
+        ;
+
+        
+    
+    
+            circle_marker_f9307acfa72a6458a47b98fcad276ef7.bindTooltip(
+                `<div>
+                     Tunnel Cam 01 — Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_91001ece05ca60c4e81a6723917cdeb5.addTo(map_280f2cdd2e8ec278891a79dccf9d0de6);
+        
+    
+            var heat_map_cfebdc632d7d06ce4c9c701d4af63429 = L.heatLayer(
+                [[39.168819, -86.521835, 1.6287], [39.173281, -86.520688, 0.5], [39.166038, -86.51873, 1.1076], [39.173864, -86.524576, 1.9324], [39.179958, -86.518517, 2.3615], [39.167293, -86.542983, 3.1261], [39.166255, -86.534631, 0.51], [39.157505, -86.5336, 8.2149], [39.162069, -86.523214, 17.83], [39.159635, -86.53168, 20.4966], [39.15859, -86.523386, 1.0], [39.158842, -86.526804, 1.1086], [39.160733, -86.529488, 1.0314], [39.164353, -86.53812, 1.0], [39.159071, -86.541224, 2.7829], [39.187802, -86.509527, 1.4028], [39.184046, -86.518722, 6.3707], [39.184316, -86.509055, 16.9091], [39.181795, -86.514634, 1.1818], [39.18132, -86.510279, 0.6], [39.167251, -86.533989, 7.4888], [39.171112, -86.536308, 1.3438], [39.167754, -86.5355, 8.9545], [39.166449, -86.533413, 1.0], [39.162914, -86.535172, 0.5], [39.152667, -86.518988, 1.88]],
+                {
+  "minOpacity": 0.35,
+  "maxZoom": 15,
+  "radius": 22,
+  "blur": 18,
+  "gradient": {
+  0.2: "blue",
+  0.4: "lime",
+  0.6: "yellow",
+  0.8: "orange",
+  1.0: "red",
+},
+}
+            );
+        
+    
+            heat_map_cfebdc632d7d06ce4c9c701d4af63429.addTo(map_280f2cdd2e8ec278891a79dccf9d0de6);
+        
+    
+            var layer_control_267197d1d89296f29b7197d06bda17a8_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_c6a21bba7bad656c07894147696b452d,
+                    "OpenStreetMap" : tile_layer_2cbae4f46384ff902d1477785893911c,
+                },
+                overlays :  {
+                    "Traffic Cameras" : feature_group_91001ece05ca60c4e81a6723917cdeb5,
+                    "Traffic Density Heatmap" : heat_map_cfebdc632d7d06ce4c9c701d4af63429,
+                },
+            };
+            let layer_control_267197d1d89296f29b7197d06bda17a8 = L.control.layers(
+                layer_control_267197d1d89296f29b7197d06bda17a8_layers.base_layers,
+                layer_control_267197d1d89296f29b7197d06bda17a8_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_280f2cdd2e8ec278891a79dccf9d0de6);
+
+        
+</script>
+</html>
