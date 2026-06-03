@@ -217,25 +217,8 @@ Interactive **Streamlit** dashboard with **8 tabs**:
 | **A/B Simulation** | Baseline vs simulated cost and safety |
 | **Forecasting** | Actual vs predicted density, residuals, RMSE |
 
-### Screenshots
 
-> Add screenshots to `docs/images/` and reference them below before publishing to GitHub.
 
-| Overview | Congestion Analytics |
-|----------|-------------------|
-| ![Overview dashboard](docs/images/dashboard_overview.png) | ![Congestion analytics](docs/images/dashboard_congestion.png) |
-
-| Near-Miss Safety | Spatial Hotspot Map |
-|------------------|---------------------|
-| ![Near-miss safety](docs/images/dashboard_near_miss.png) | ![Hotspot map](docs/images/dashboard_hotspot_map.png) |
-
-```bash
-PYTHONPATH=src streamlit run src/traffic_safety/dashboard/app.py
-```
-
-Open **http://localhost:8501** (or the port shown in your terminal).
-
----
 
 ## PostgreSQL Setup
 
