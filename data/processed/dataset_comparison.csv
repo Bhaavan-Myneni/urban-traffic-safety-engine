@@ -1,0 +1,4 @@
+dataset,display_name,video_count,camera_count,total_detections,vehicle_count,pedestrian_count,near_miss_count,avg_density,max_density,status
+mixkit,Mixkit (MVP / Portfolio),30,30,40126,23004,17122,142,4.74,20.5,ready
+aicity,AI City Challenge,0,0,0,0,0,0,0.0,0.0,manifest_only
+bdd100k,BDD100K,0,0,0,0,0,0,0.0,0.0,manifest_only

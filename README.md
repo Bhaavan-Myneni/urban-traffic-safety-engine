@@ -615,6 +615,44 @@ urban-traffic-safety-engine/
 
 ---
 
+## Deployment on Render
+
+Host the **CSV-only** Streamlit dashboard as a public web service. No PostgreSQL, raw videos, or YOLO weights are required at runtime.
+
+| Setting | Value |
+|---------|--------|
+| **Main file** | `src/traffic_safety/dashboard/streamlit_app.py` |
+| **Build command** | `pip install -r requirements-render.txt` |
+| **Start command** | `streamlit run src/traffic_safety/dashboard/streamlit_app.py --server.address 0.0.0.0 --server.port $PORT` |
+| **Full local stack** | `pip install -r requirements.txt` (adds YOLO, OpenCV, Airflow tooling) |
+
+`render.yaml` in the repo root defines a `web` service with the same settings. On Render: **New → Blueprint** (or Web Service), connect the GitHub repo, and deploy.
+
+### Environment notes
+
+| Variable | Purpose |
+|----------|---------|
+| `DASHBOARD_CSV_ONLY=1` | Set automatically in `render.yaml` — reads `data/processed/*.csv` only |
+| `RENDER` | Set by Render — also enables CSV-only mode |
+| `PORT` | Injected by Render — passed to Streamlit |
+
+Do **not** set `DATABASE_URL` for the public dashboard. Optional analytics files that are missing show **warnings** in the UI; core tabs need the three master CSVs listed in `data/processed/DEMO_README.md`.
+
+### Before deploying
+
+1. Commit demo CSVs under `data/processed/` (see `.gitignore` exceptions for `*.csv`).
+2. Commit `outputs/traffic_hotspot_map.html` for the map tab (optional but recommended).
+3. Confirm `.env`, `.venv/`, `data/raw/**` videos, and `models/**` weights stay gitignored.
+
+### Local smoke test (production entry point)
+
+```bash
+pip install -r requirements-render.txt
+DASHBOARD_CSV_ONLY=1 streamlit run src/traffic_safety/dashboard/streamlit_app.py
+```
+
+---
+
 ## Development
 
 ```bash

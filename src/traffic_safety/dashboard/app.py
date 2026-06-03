@@ -120,6 +120,29 @@ def get_resolved_paths():
     return resolve_data_paths()
 
 
+def render_deploy_notices(data: DashboardData) -> None:
+    """Surface missing optional analytics files without crashing."""
+    from traffic_safety.dashboard.data_loader import is_csv_only_mode
+
+    if is_csv_only_mode():
+        st.info(
+            "Public demo mode: analytics load from committed CSV files in "
+            "`data/processed/`. PostgreSQL and local video pipelines are not required."
+        )
+
+    missing = [
+        label.replace("_", " ")
+        for label, available in data.optional_available.items()
+        if not available
+    ]
+    if missing:
+        st.warning(
+            "Some optional analytics files are not bundled with this deployment: "
+            + ", ".join(missing)
+            + ". Related tabs will show placeholders until those CSVs are added."
+        )
+
+
 def render_header(mode: str) -> None:
     mode_label = "Batch Master Dataset" if mode == "master" else "MVP Dataset"
     st.markdown(
@@ -751,6 +774,7 @@ def main() -> None:
         return
 
     render_header(data.mode)
+    render_deploy_notices(data)
     filters = render_sidebar_filters(data)
     filtered = apply_filters(data, filters)
 

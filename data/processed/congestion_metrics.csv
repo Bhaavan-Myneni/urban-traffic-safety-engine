@@ -1,0 +1,3 @@
+minute,sampled_frame_count,vehicle_count,pedestrian_count,avg_vehicles_per_frame,avg_pedestrians_per_frame,traffic_density,congestion_level
+0,136,881,464,6.4779,3.4118,8.1838,Medium
+1,72,490,871,6.8056,12.0972,12.8542,High

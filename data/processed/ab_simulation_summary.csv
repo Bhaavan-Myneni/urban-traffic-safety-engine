@@ -1,0 +1,9 @@
+scene_type,camera_count,baseline_density_avg,simulated_density_avg,baseline_near_miss_risk_total,simulated_near_miss_risk_total,baseline_delay_cost_usd_total,simulated_delay_cost_usd_total,delay_cost_change_usd_total,scenario
+aerial,4,1.2922,1.2663,0,0,0.0,0.0,0.0,protected_bike_lane
+city_street,7,7.0974,7.3103,53,40,12128.4,11763.3,-365.1,protected_bike_lane
+composite,1,10.2844,10.0787,61,55,6238.8,10084.5,3845.7,protected_bike_lane
+dashcam,2,1.8914,1.8536,6,5,0.0,0.0,0.0,protected_bike_lane
+highway,7,4.118,4.118,0,0,6417.6,6417.6,0.0,protected_bike_lane
+intersection,6,3.2145,3.311,21,16,2224.8,2158.2,-66.6,protected_bike_lane
+night_city,2,1.818,1.7817,1,1,0.0,0.0,0.0,protected_bike_lane
+tunnel,1,1.88,1.8424,0,0,0.0,0.0,0.0,protected_bike_lane

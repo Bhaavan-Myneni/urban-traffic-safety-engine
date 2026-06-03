@@ -82,13 +82,29 @@ secrets/
 
 # Data (large / sensitive — keep structure via .gitkeep)
 data/raw/**
-data/processed/**
 data/interim/**
 data/external/**
 !data/raw/.gitkeep
-!data/processed/.gitkeep
 !data/interim/.gitkeep
 !data/external/.gitkeep
+
+# Processed analytics: ignore large/generated trees, keep demo CSVs for Render
+data/processed/**
+!data/processed/.gitkeep
+!data/processed/*.csv
+!data/processed/DEMO_README.md
+
+# Raw video files (never commit)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Outputs — commit pre-built hotspot map for dashboard deploy
+outputs/**
+!outputs/.gitkeep
+!outputs/traffic_hotspot_map.html
 
 # Model artifacts
 models/**/*.pt

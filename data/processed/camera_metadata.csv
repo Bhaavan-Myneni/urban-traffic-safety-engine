@@ -1,0 +1,31 @@
+camera_id,camera_name,scene_type,latitude,longitude,road_type
+CAM_AERIAL_01,Aerial Cam 01,aerial,39.168819,-86.521835,aerial_corridor
+CAM_AERIAL_02,Aerial Cam 02,aerial,39.173281,-86.520688,aerial_corridor
+CAM_AERIAL_03,Aerial Cam 03,aerial,39.166038,-86.51873,aerial_corridor
+CAM_AERIAL_04,Aerial Cam 04,aerial,39.173864,-86.524576,aerial_corridor
+CAM_BATCH_COMPOSITE_01,Batch Composite Cam 01,composite,39.163413,-86.530445,mixed_corridor
+CAM_BRIDGE_01,Bridge Cam 01,highway,39.179958,-86.518517,highway
+CAM_CITY_NIGHT_01,City Night Cam 01,night_city,39.167293,-86.542983,urban_arterial
+CAM_CITY_NIGHT_02,City Night Cam 02,night_city,39.166255,-86.534631,urban_arterial
+CAM_CITY_STREET_01,City Street Cam 01,city_street,39.157505,-86.5336,urban_arterial
+CAM_CITY_STREET_02,City Street Cam 02,city_street,39.162069,-86.523214,urban_arterial
+CAM_CITY_STREET_03,City Street Cam 03,city_street,39.159635,-86.53168,urban_arterial
+CAM_CITY_STREET_04,City Street Cam 04,city_street,39.164517,-86.530665,urban_arterial
+CAM_CITY_STREET_05,City Street Cam 05,city_street,39.15859,-86.523386,urban_arterial
+CAM_CITY_STREET_06,City Street Cam 06,city_street,39.158842,-86.526804,urban_arterial
+CAM_CITY_STREET_07,City Street Cam 07,city_street,39.160733,-86.529488,urban_arterial
+CAM_DASHCAM_01,Dashcam Cam 01,dashcam,39.164353,-86.53812,local_street
+CAM_DASHCAM_02,Dashcam Cam 02,dashcam,39.159071,-86.541224,local_street
+CAM_HIGHWAY_01,Highway Cam 01,highway,39.187802,-86.509527,highway
+CAM_HIGHWAY_02,Highway Cam 02,highway,39.184046,-86.518722,highway
+CAM_HIGHWAY_03,Highway Cam 03,highway,39.184316,-86.509055,highway
+CAM_HIGHWAY_04,Highway Cam 04,highway,39.181795,-86.514634,highway
+CAM_HIGHWAY_05,Highway Cam 05,highway,39.180022,-86.514685,highway
+CAM_HIGHWAY_06,Highway Cam 06,highway,39.18132,-86.510279,highway
+CAM_INTERSECTION_01,Intersection Cam 01,intersection,39.167251,-86.533989,signalized_intersection
+CAM_INTERSECTION_02,Intersection Cam 02,intersection,39.171112,-86.536308,signalized_intersection
+CAM_INTERSECTION_03,Intersection Cam 03,intersection,39.167754,-86.5355,signalized_intersection
+CAM_INTERSECTION_04,Intersection Cam 04,intersection,39.166449,-86.533413,signalized_intersection
+CAM_INTERSECTION_05,Intersection Cam 05,intersection,39.161511,-86.528504,signalized_intersection
+CAM_ROUNDABOUT_01,Roundabout Cam 01,intersection,39.162914,-86.535172,signalized_intersection
+CAM_TUNNEL_01,Tunnel Cam 01,tunnel,39.152667,-86.518988,tunnel

@@ -1,0 +1,17 @@
+# Render Blueprint — Urban Traffic Safety Engine (public dashboard)
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: traffic-safety-dashboard
+    runtime: python
+    plan: free
+    # Use requirements-render.txt for a fast CSV-only dashboard build (no YOLO/torch).
+    # For the full stack, use: pip install -r requirements.txt
+    buildCommand: pip install -r requirements-render.txt
+    startCommand: streamlit run src/traffic_safety/dashboard/streamlit_app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
+    envVars:
+      - key: DASHBOARD_CSV_ONLY
+        value: "1"
+      - key: PYTHON_VERSION
+        value: "3.11.9"

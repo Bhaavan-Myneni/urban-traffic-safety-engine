@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import math
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -75,6 +76,14 @@ class DataLoadError(Exception):
     """Raised when required dashboard data files are missing or invalid."""
 
 
+def is_csv_only_mode() -> bool:
+    """True when the dashboard must not use PostgreSQL or rebuild datasets."""
+    flag = os.environ.get("DASHBOARD_CSV_ONLY", "").strip().lower()
+    if flag in {"1", "true", "yes", "on"}:
+        return True
+    return bool(os.environ.get("RENDER"))
+
+
 def resolve_data_paths() -> DataPaths:
     """Prefer batch master files; fall back to MVP files when master is unavailable."""
     master_ready = all(
@@ -100,13 +109,11 @@ def resolve_data_paths() -> DataPaths:
         )
 
     raise DataLoadError(
-        "No dashboard dataset found.\n\n"
-        "Batch pipeline:\n"
+        "No dashboard dataset found in data/processed/.\n\n"
+        "Commit demo CSVs (traffic_detections_master.csv, congestion_metrics_master.csv, "
+        "object_summary_master.csv) or run the local pipeline:\n"
         "  python scripts/batch_detection.py\n"
-        "  python scripts/compute_metrics.py --master\n\n"
-        "MVP pipeline:\n"
-        "  python scripts/run_detection.py\n"
-        "  python scripts/compute_metrics.py"
+        "  python scripts/compute_metrics.py --master"
     )
 
 
@@ -208,7 +215,7 @@ def load_dashboard_data(paths: DataPaths | None = None) -> DashboardData:
         ab_simulation_summary=optional_data["ab_simulation_summary"],
         congestion_features=optional_data["congestion_features"],
         forecast_predictions=optional_data["forecast_predictions"],
-        dataset_comparison=optional_data["dataset_comparison"],
+        dataset_comparison=dataset_comparison,
         hotspot_map_path=hotspot_map_path,
         optional_available=optional_available,
     )
@@ -509,9 +516,14 @@ def get_filter_options(data: DashboardData) -> dict[str, list[str]]:
 
 
 def load_or_build_dataset_comparison() -> pd.DataFrame | None:
-    """Load comparison CSV or build it on the fly when missing."""
-    if DATASET_COMPARISON_PATH.exists():
-        return _read_csv_optional(DATASET_COMPARISON_PATH, "dataset comparison")
+    """Load comparison CSV or build it on the fly when missing (local dev only)."""
+    loaded = _read_csv_optional(DATASET_COMPARISON_PATH, "dataset comparison")
+    if loaded is not None:
+        return loaded
+
+    if is_csv_only_mode():
+        logger.info("Skipping dataset comparison build (CSV-only / deploy mode).")
+        return None
 
     try:
         from traffic_safety.data.dataset_comparison import build_comparison_dataframe

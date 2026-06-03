@@ -1,3 +1,6 @@
+# Render dashboard (CSV-only): pip install -r requirements-render.txt
+-r requirements-render.txt
+
 # Core
 python-dotenv>=1.0.0
 pydantic>=2.5.0
@@ -10,7 +13,8 @@ pyarrow>=14.0.0
 
 # Computer vision & object detection
 opencv-python>=4.9.0
-ultralytics>=8.1.0          # YOLOv8
+opencv-python-headless>=4.9.0   # preferred on Linux servers / CI
+ultralytics>=8.1.0               # YOLOv8
 Pillow>=10.2.0
 
 # Machine learning
@@ -22,10 +26,11 @@ psycopg2-binary>=2.9.9
 SQLAlchemy>=2.0.25
 alembic>=1.13.0
 
-# Dashboard
+# Dashboard (also in requirements-render.txt)
 streamlit>=1.31.0
 plotly>=5.18.0
 altair>=5.2.0
+# streamlit-folium not required — hotspot map uses pre-built HTML + components.html
 
 # Apache Airflow (install separately in prod; listed for reference)
 # apache-airflow>=2.8.0
