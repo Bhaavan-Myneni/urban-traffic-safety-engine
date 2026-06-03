@@ -556,19 +556,6 @@ The pipeline validates missing manifests, invalid YAML, empty video folders, mis
 
 ---
 
-## Resume Bullets
-
-Use these directly on a data engineering, analytics, or ML portfolio resume:
-
-- Built an end-to-end **Urban Traffic Safety Engine** processing **29 traffic videos** and **26,699 YOLOv8 detections** across **26 camera feeds** with batch multiprocessing and modular Python pipelines.
-- Engineered congestion KPIs, **81 near-miss safety events**, and **$20,770.80 delay cost estimates** to translate computer vision outputs into operational and economic insights.
-- Designed a **PostgreSQL + SQLAlchemy** data layer and **10 advanced SQL analytics queries** using CTEs, window functions, and percentile ranking for camera-level traffic analysis.
-- Delivered a **9-tab Streamlit dashboard** with Plotly visualizations, Folium geospatial hotspot maps, multi-dataset comparison, and interactive filters for stakeholders.
-- Implemented **scikit-learn traffic density forecasting** (RMSE **5.51**) with weather/event feature engineering and prototype lag/rolling temporal features.
-- Simulated a **protected bike lane A/B intervention**, reducing near-miss events **81 → 62** and modeling **$431.70** in delay cost savings.
-- Orchestrated daily batch pipelines with **Apache Airflow** (download → detect → metrics → PostgreSQL → forecast) using production-style CLI script integration.
-
----
 
 ## Project Structure
 
@@ -616,4 +603,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**Bhaavan Myneni** — [GitHub](https://github.com/your-username) · [LinkedIn](https://linkedin.com/in/your-profile)
+**Bhaavan Myneni** — [GitHub](https://github.com/your-username) 
